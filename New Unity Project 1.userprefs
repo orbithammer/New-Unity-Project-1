@@ -1,0 +1,17 @@
+﻿<Properties>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Game Scripts\SimpleCharacterController.cs">
+    <Files>
+      <File FileName="Assets\Game Scripts\SimpleCharacterController.cs" Line="18" Column="6" />
+      <File FileName="Assets\Game Scripts\SensorDoors.cs" Line="1" Column="1" />
+      <File FileName="Assets\Test Scripts\UpdateTests.cs" Line="1" Column="1" />
+      <File FileName="Assets\Test Scripts\VariablesTest.cs" Line="1" Column="1" />
+      <File FileName="..\9781430267799\Chapter 5 Assets\Chapter 5 Assets\Scripts\ColliderTests2.cs" Line="1" Column="1" />
+      <File FileName="..\9781430267799\Chapter 6 Assets\Chapter 6 Assets\Scripts\SensorDoors2.cs" Line="1" Column="1" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+</Properties>

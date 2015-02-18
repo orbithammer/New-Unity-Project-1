@@ -1,0 +1,101 @@
+fileFormatVersion: 2
+guid: 7b6942a764ffb3e49a4fca00bf612ce2
+ModelImporter:
+  serializedVersion: 16
+  fileIDToRecycleName:
+    100000: Alien Herbavore Mesh
+    100002: Alien Motion Root
+    100004: Alien Root
+    100006: //RootNode
+    100008: Bone Back
+    100010: Bone Ear Left
+    100012: Bone Ear Right
+    100014: Bone Front Leg
+    100016: Bone Green nubL
+    100018: Bone Green nubR
+    100020: Bone Greens
+    100022: Bone Greens L
+    100024: Bone Greens R
+    100026: Bone Head
+    100028: Bone Hind leg
+    100030: Bone Hip
+    100032: Bone Jaw
+    100034: Bone Shoulder
+    100036: Bone Tail
+    400000: Alien Herbavore Mesh
+    400002: Alien Motion Root
+    400004: Alien Root
+    400006: //RootNode
+    400008: Bone Back
+    400010: Bone Ear Left
+    400012: Bone Ear Right
+    400014: Bone Front Leg
+    400016: Bone Green nubL
+    400018: Bone Green nubR
+    400020: Bone Greens
+    400022: Bone Greens L
+    400024: Bone Greens R
+    400026: Bone Head
+    400028: Bone Hind leg
+    400030: Bone Hip
+    400032: Bone Jaw
+    400034: Bone Shoulder
+    400036: Bone Tail
+    4300000: Alien Herbavore Mesh
+    7400000: Take 001
+    9500000: //RootNode
+    13700000: Alien Herbavore Mesh
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationCompression: 1
+    animationRotationError: .5
+    animationPositionError: .5
+    animationScaleError: .5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: .00999999978
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+  tangentSpace:
+    normalSmoothAngle: 60
+    splitTangentsAcrossUV: 1
+    normalImportMode: 0
+    tangentImportMode: 1
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: .5
+    foreArmTwist: .5
+    upperLegTwist: .5
+    legTwist: .5
+    armStretch: .0500000007
+    legStretch: .0500000007
+    feetSpacing: 0
+    rootMotionBoneName: 
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  additionalBone: 0
+  userData: 

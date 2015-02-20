@@ -13,11 +13,11 @@ public class VariablesTest : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		if (legs == 1) {
-			Debug.Log ("The " + gameObject.name + " has " + legs + " leg.");
-		} else {
-			Debug.Log ("The " + gameObject.name + " has " + legs + " legs.");
-		}
+//		if (legs == 1) {
+//			Debug.Log ("The " + gameObject.name + " has " + legs + " leg.");
+//		} else {
+//			Debug.Log ("The " + gameObject.name + " has " + legs + " legs.");
+//		}
 	}
 	
 	// Update is called once per frame

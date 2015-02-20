@@ -49,8 +49,10 @@
      <Compile Include="Assets\Game Scripts\DistanceDetector.cs" />
      <Compile Include="Assets\Game Scripts\HideAtStart.cs" />
      <Compile Include="Assets\Game Scripts\OcclusionManager.cs" />
+     <Compile Include="Assets\Game Scripts\PlantVeggies.cs" />
      <Compile Include="Assets\Game Scripts\SensorDoors.cs" />
      <Compile Include="Assets\Game Scripts\SimpleCharacterController.cs" />
+     <Compile Include="Assets\Game Scripts\SpawnBunnies.cs" />
      <Compile Include="Assets\Test Scripts\ColliderTests.cs" />
      <Compile Include="Assets\Test Scripts\UpdateTests.cs" />
      <Compile Include="Assets\Test Scripts\VariablesTest.cs" />

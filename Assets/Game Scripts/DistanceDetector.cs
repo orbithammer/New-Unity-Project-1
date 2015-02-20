@@ -5,20 +5,20 @@ public class DistanceDetector : MonoBehaviour {
 	public Transform targetTransform; //the gnome's transform
 	public Transform theCamera; //the camera's transform
 	Vector2 source; //the gateway
-	Vector3 target; //the gnome
+	Vector2 target; //the gnome
 
 	// Use this for initialization
 	void Start () {
 		//assign the x and z position to the source var
-		source = new Vector2 (transform.position.x, transform.position.y);
-		print (source);
+		source = new Vector2 (transform.position.x, transform.position.z);
+//		print (source);
 	}
 	
 	// Update is called once per frame
 	void Update () {
 		//update the target's location
 		target = new Vector2 (targetTransform.position.x, targetTransform.position.z);
-		print (target);
+//		print (target);
 		//get the distance between the target and source
 		float dist = Vector3.Distance (source, target);
 		if (dist < 3.0f && dist > .5f) {

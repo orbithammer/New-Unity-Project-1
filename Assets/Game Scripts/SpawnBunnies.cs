@@ -12,6 +12,7 @@ public class SpawnBunnies : MonoBehaviour {
 	float reproRate = 12f; //base time before respawning
 	bool canReproduce = true; //flag to control the reproduction of zombie bunnies
 	int currentBunCount = 0; //add the latest count to the total
+	public Transform bunHolder; //to parent the instantiated zombie bunnies to
 
 	// Use this for initialization
 	void Start () {
@@ -41,6 +42,7 @@ public class SpawnBunnies : MonoBehaviour {
 			zBunny.transform.localEulerAngles = rot; //assign the new rotation
 			//randomize the animation clip starting point
 			zBunny.GetComponent<Animator>().Play("bunny eat", 0, Random.Range(0.0f,1.0f));
+			zBunny.transform.parent = bunHolder; //assign the clone to this object's transform
 		}
 		}
 	IEnumerator StartReproducing(float minTime) {

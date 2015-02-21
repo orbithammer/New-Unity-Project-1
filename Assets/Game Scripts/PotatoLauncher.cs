@@ -17,6 +17,11 @@ public class PotatoLauncher : MonoBehaviour {
 		if (Input.GetButton ("Fire1")) {
 			ShootProjectile (); //...shoot the projectile
 		}
-	
+	}
+	void ShootProjectile () {
+		//create a clone of the projectile at the location & orientation of the script's parent
+		GameObject potato = (GameObject)Instantiate (projectile, transform.positition, transform.rotation);
+		//add some force to send the projectile off in its forward direction
+		potato.rigidbody.velocity = transform.TransformDirection (new Vector3 (0, 0, speed));
 	}
 }

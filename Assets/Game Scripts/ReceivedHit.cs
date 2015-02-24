@@ -5,6 +5,7 @@ public class ReceivedHit : MonoBehaviour {
 	public GameObject gameManager; //the master repository for game info
 	public GameObject deadReplacement; //this will be ToastedZombie
 	public GameObject smokePlume; //smoke particle system
+	int damage = 0; //accumulated damage points
 
 	// Use this for initialization
 	void Start () {
@@ -16,12 +17,19 @@ public class ReceivedHit : MonoBehaviour {
 	void Update () {
 	
 	}
-	void OnCollisionEnter (Collision collision) {
-		if (collision.transform.tag == "Ammo") {
+//	void OnCollisionEnter (Collision collision) {
+//		if (collision.transform.tag == "Ammo") {
 			//if it was hit by something tagged as Ammo, process its destruction
+//			DestroyBun ();
+//		}
+//	}
+	void Terminator (int newDamage) {
+		damage += newDamage; //add more damage from
+		print (damage);
+		if (damage > 30)
 			DestroyBun ();
-		}
 	}
+
 	void DestroyBun() {
 		if (deadReplacement) {
 			//get the deadReplacvemnt's object parent

@@ -2,9 +2,13 @@
 using System.Collections;
 
 public class ReceivedHit : MonoBehaviour {
+	public GameObject gameManager; //the master repository for game info
+	public GameObject deadReplacement; //this will be ToastedZombie
+	public GameObject smokePlume; //smoke particle system
 
 	// Use this for initialization
 	void Start () {
+		gameManager = GameObject.Find ("Game Manager"); //identify and assign the Game Manager object
 	
 	}
 	
@@ -19,6 +23,22 @@ public class ReceivedHit : MonoBehaviour {
 		}
 	}
 	void DestroyBun() {
-		Destroy (gameObject, 0.2f); //destroy it after a brief pause
+		if (deadReplacement) {
+			//get the deadReplacvemnt's object parent
+			GameObject deadParent = deadReplacement.transform.parent.gameObject;
+			//instantiate the dead replacement's parent at this object's transform
+			GameObject dead = (GameObject)Instantiate (deadParent, transform.position, transform.rotation);
+			//trigger its default animation
+			deadReplacement.GetComponent<Animator> ().Play ("Jump Shrink");
+			//destroy the dead replacement's parent after a second
+			Destroy (dead, 1.0f);
+			GameObject plume = (GameObject) Instantiate(smokePlume, transform.position, smokePlume.transform.rotation);
+			//trigger to be destroyed at its end/Durantion + max lifetime
+			Destroy (plume,10f);
+		}
+		Destroy (gameObject, 0.001f); //destroy it after a brief pause
+		//send the ammount to update the total
+		gameManager.SendMessage ("UpdateCount", -1, SendMessageOptions.DontRequireReceiver);
+
 	}
 }

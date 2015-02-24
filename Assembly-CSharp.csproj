@@ -52,6 +52,7 @@
      <Compile Include="Assets\Game Scripts\PlantVeggies.cs" />
      <Compile Include="Assets\Game Scripts\PotatoLauncher.cs" />
      <Compile Include="Assets\Game Scripts\Projectile.cs" />
+     <Compile Include="Assets\Game Scripts\RandomSound.cs" />
      <Compile Include="Assets\Game Scripts\ReceivedHit.cs" />
      <Compile Include="Assets\Game Scripts\ScoreKeeper.cs" />
      <Compile Include="Assets\Game Scripts\SensorDoors.cs" />

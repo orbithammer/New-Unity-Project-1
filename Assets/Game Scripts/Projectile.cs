@@ -2,6 +2,7 @@
 using System.Collections;
 
 public class Projectile : MonoBehaviour {
+	public GameObject explosion; //the particle system associated with projectile
 
 	// Use this for initialization
 	void Start () {
@@ -14,7 +15,9 @@ public class Projectile : MonoBehaviour {
 	
 	}
 	void OnCollisionEnter () {
+		Vector3 explosionPosition = transform.position; //the projectile's position at the hit
+		Instantiate (explosion, explosionPosition, Quaternion.identity);
 		//destroy this object if this script is on 2 seconds after instantiation
-		Destroy (gameObject, 2f);
+		Destroy (gameObject);
 	}
 }

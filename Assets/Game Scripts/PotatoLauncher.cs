@@ -4,7 +4,7 @@ using System.Collections;
 public class PotatoLauncher : MonoBehaviour {
 	public GameObject projectile; //the projectile prefab
 	public float speed = 20f; //give speed a default of 20
-	float loadRate =0.5f; //how often a projectile can be fired
+	internal float loadRate =0.5f; //how often a projectile can be fired
 	float timeRemaining; //how much time before the next shot can happen
 
 	// Use this for initialization
@@ -28,5 +28,9 @@ public class PotatoLauncher : MonoBehaviour {
 		//add some force to send the projectile off in its forward direction
 		potato.rigidbody.velocity = transform.TransformDirection (new Vector3 (0, 0, speed));
 		audio.Play (); //play the default audio clip on this component's game object
+	}
+	void RewardTime () {
+		if (loadRate > 0.1f)
+			loadRate -= 0.1f; //decrease the loadRate by 0.1f
 	}
 }

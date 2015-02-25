@@ -10,7 +10,7 @@ public class SpawnBunnies : MonoBehaviour {
 	float maxZ;
 	int litterSize = 8;
 	float reproRate = 12f; //base time before respawning
-	bool canReproduce = true; //flag to control the reproduction of zombie bunnies
+	internal bool canReproduce = true; //flag to control the reproduction of zombie bunnies
 //	int currentBunCount = 0; //add the latest count to the total
 	public Transform bunHolder; //to parent the instantiated zombie bunnies to
 	GameObject gameManager; //the master repository for game info
@@ -33,6 +33,8 @@ public class SpawnBunnies : MonoBehaviour {
 	
 	}
 	void PopulateGardenBunnies (int count) {
+		if (!canReproduce)
+			return; //cancel the latest population explosion
 		count = Random.Range (count * 3 / 4, count + 1); //randomize the count number
 		//send the ammount to update the total
 		gameManager.SendMessage("UpdateCount",count, SendMessageOptions.DontRequireReceiver);

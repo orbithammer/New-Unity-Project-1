@@ -6,6 +6,7 @@ public class ReceivedHit : MonoBehaviour {
 	public GameObject deadReplacement; //this will be ToastedZombie
 	public GameObject smokePlume; //smoke particle system
 	int damage = 0; //accumulated damage points
+	bool alreadyDead = false; //flag to prevent duplicate 'deaths'
 
 	// Use this for initialization
 	void Start () {
@@ -23,14 +24,11 @@ public class ReceivedHit : MonoBehaviour {
 //			DestroyBun ();
 //		}
 //	}
-	void Terminator (int newDamage) {
-		damage += newDamage; //add more damage from
-		print (damage);
-		if (damage > 30)
-			DestroyBun ();
-	}
 
 	void DestroyBun() {
+		if (alreadyDead)
+			return; //bypass the rest of the function
+		alreadyDead = true; //set the flag
 		if (deadReplacement) {
 			//get the deadReplacvemnt's object parent
 			GameObject deadParent = deadReplacement.transform.parent.gameObject;
@@ -48,5 +46,11 @@ public class ReceivedHit : MonoBehaviour {
 		//send the ammount to update the total
 		gameManager.SendMessage ("UpdateCount", -1, SendMessageOptions.DontRequireReceiver);
 
+	}
+	void Terminator (int newDamage) {
+		damage += newDamage; //add more damage from
+		print (damage);
+		if (damage > 10)
+			DestroyBun (); //destroy only if there is enough damage
 	}
 }

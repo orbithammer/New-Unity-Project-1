@@ -25,15 +25,15 @@ public class Projectile : MonoBehaviour {
 		ContactPoint contact = collision.contacts [0];
 		//get the normal of het contact point
 		Quaternion rotation = Quaternion.FromToRotation (Vector3.up, contact.normal);
-		//instantiate an explosion at that point, using its normal as teh orientation
+		//instantiate an explosion at that point, using its normal as the orientation
 		Instantiate (explosion, contact.point, rotation);
-		//find all nearby colliders and put hem into an array
+		//find all nearby colliders and put them into an array
 		Collider[] hitColliders = Physics.OverlapSphere (transform.position, explosionRadius);
-		//apply a force o all surrounding rigid bodies & destroy anyhing with a Terminator function
+		//apply a force to all surrounding rigid bodies & destroy anything with a Terminator function
 		foreach (Collider hit in hitColliders) {
 			//tell the rigidbody or any other script attached to it that the object was hit,
 			//via the Terminator script
-			hit.gameObject.SendMessage ("Terminator", damage, SendMessageOptions.DontRequireReceiver);
+			hit.gameObject.SendMessage ("Terminator", damage + Random.Range(0,2), SendMessageOptions.DontRequireReceiver);
 			if (hit.rigidbody) {//if it has a rigidbody...
 				hit.rigidbody.AddExplosionForce (explosionPower, transform.position, explosionRadius);
 			}

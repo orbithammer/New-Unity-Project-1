@@ -1,7 +1,14 @@
 fileFormatVersion: 2
 guid: d7db4304dba97b046bd5acdf0642d7de
 TextureImporter:
-  fileIDToRecycleName: {}
+  fileIDToRecycleName:
+    21300000: Stork_0
+    21300002: Stork_1
+    21300004: Stork_2
+    21300006: Stork_3
+    21300008: Stork_4
+    21300010: Stork_5
+    21300012: Stork_6
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -21,7 +28,7 @@ TextureImporter:
   grayScaleToAlpha: 0
   generateCubemap: 0
   seamlessCubemap: 0
-  textureFormat: -1
+  textureFormat: -2
   maxTextureSize: 1024
   textureSettings:
     filterMode: -1
@@ -31,7 +38,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -42,6 +49,76 @@ TextureImporter:
   textureType: 8
   buildTargetSettings: []
   spriteSheet:
-    sprites: []
+    sprites:
+    - name: Stork_0
+      rect:
+        serializedVersion: 2
+        x: 8
+        y: 773
+        width: 319
+        height: 224
+      alignment: 9
+      pivot: {x: .212899476, y: .507110894}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Stork_1
+      rect:
+        serializedVersion: 2
+        x: 351
+        y: 772
+        width: 319
+        height: 153
+      alignment: 9
+      pivot: {x: .20790641, y: .744643688}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Stork_2
+      rect:
+        serializedVersion: 2
+        x: 695
+        y: 759
+        width: 319
+        height: 141
+      alignment: 9
+      pivot: {x: .210402921, y: .895372331}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Stork_3
+      rect:
+        serializedVersion: 2
+        x: 8
+        y: 377
+        width: 265
+        height: 178
+      alignment: 9
+      pivot: {x: .250564098, y: .916092753}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Stork_4
+      rect:
+        serializedVersion: 2
+        x: 350
+        y: 408
+        width: 319
+        height: 147
+      alignment: 9
+      pivot: {x: .209120318, y: .897624552}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Stork_5
+      rect:
+        serializedVersion: 2
+        x: 695
+        y: 429
+        width: 319
+        height: 135
+      alignment: 9
+      pivot: {x: .211378142, y: .823514819}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Stork_6
+      rect:
+        serializedVersion: 2
+        x: 8
+        y: 83
+        width: 319
+        height: 224
+      alignment: 9
+      pivot: {x: .209027633, y: .507466197}
+      border: {x: 0, y: 0, z: 0, w: 0}
   spritePackingTag: 
   userData: 

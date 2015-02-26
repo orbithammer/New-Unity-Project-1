@@ -48,6 +48,7 @@
   <ItemGroup>
      <Compile Include="Assets\Game Scripts\BatteryHealth.cs" />
      <Compile Include="Assets\Game Scripts\DistanceDetector.cs" />
+     <Compile Include="Assets\Game Scripts\FlyBy.cs" />
      <Compile Include="Assets\Game Scripts\HideAtStart.cs" />
      <Compile Include="Assets\Game Scripts\OcclusionManager.cs" />
      <Compile Include="Assets\Game Scripts\PlantRemover.cs" />

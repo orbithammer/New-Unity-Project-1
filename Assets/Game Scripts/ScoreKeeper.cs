@@ -28,7 +28,9 @@ public class ScoreKeeper : MonoBehaviour {
 			GardenSecure ();
 			return;
 		}
-		if (currentBunCount == 1) { //stop the population explosion
+		if (currentBunCount == 10) { //stop the population explosion
+			//stop the battery drain - the threat is almost neutralized
+			GameObject.Find ("Battery Life").GetComponent<BatteryHealth>().trackingBattery = false;
 			spawner.canReproduce = false;
 		}
 		if (launcher.loadRate < 0.2f)

@@ -14,6 +14,9 @@ public class SpawnBunnies : MonoBehaviour {
 //	int currentBunCount = 0; //add the latest count to the total
 	public Transform bunHolder; //to parent the instantiated zombie bunnies to
 	GameObject gameManager; //the master repository for game info
+	public GameObject stork; //the Stork group
+	public Animator beak; //the lower beak's animator component
+	public Animator bundle; //the bundle's animator component
 
 	// Use this for initialization
 	void Start () {
@@ -54,8 +57,12 @@ public class SpawnBunnies : MonoBehaviour {
 		//wait for this amount of time before going on
 		float adjustedTime = Random.Range (minTime, minTime + 5);
 		yield return new WaitForSeconds (adjustedTime-3f);
-		audio.Play (); //play the sound effect that signals the repro populating
-		yield return new WaitForSeconds (3f); //finish the adjusted time
+		stork.SetActive (true); //reactivate the stork
+		stork.SendMessage ("Initialize", SendMessageOptions.DontRequireReceiver); //initialize the stork
+		stork.audio.Play (); //play the sound effect that signals the repro populating
+		yield return new WaitForSeconds (Random.Range(1f,2f)); //finish the adjusted time
+		beak.SetBool ("Cue the Beak", true); //trigger the beak drop
+		DropBundle ();
 		//having waited, make more zombie bunnies
 		PopulateGardenBunnies (litterSize);
 		//and start the coroutine again to minTime, but only if there are enough to reproduce

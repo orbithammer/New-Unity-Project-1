@@ -9,6 +9,7 @@ public class BatteryHealth : MonoBehaviour {
 	GUIText guiTxt; //the GUI text component
 	public GameObject energyBar; //the battery's energy bar sprite
 	float baseScale; //the energy bar's base y scale
+	public EndGameGUI endGameGUI; //the script that handles the GUI
 
 	// Use this for initialization
 	void Start () {
@@ -61,5 +62,7 @@ public class BatteryHealth : MonoBehaviour {
 		GameObject.Find ("Gnomatic Garden Defender").GetComponent<MouseLook> ().enabled = false;
 		//disable weapon aiming
 		GameObject.Find ("Arm Group").GetComponent<MouseLook> ().enabled = false;
+		//end of game options
+		endGameGUI.TriggerMessage ("Garden Overrun");
 	}
 }

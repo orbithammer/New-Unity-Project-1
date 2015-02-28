@@ -8,6 +8,8 @@ public class ScoreKeeper : MonoBehaviour {
 	int hitsRequired = 10; //hits required for the reward
 	public PotatoLauncher launcher; //the potato launcher script
 	public SpawnBunnies spawner; //the SpawnBunnies script
+	public int stopPopX = 1; //variable for stopping extra zombie bunny drops
+	public EndGameGUI endGameGUI; //the script that handles the GUI
 
 	// Use this for initialization
 	void Start () {
@@ -28,7 +30,7 @@ public class ScoreKeeper : MonoBehaviour {
 			GardenSecure ();
 			return;
 		}
-		if (currentBunCount == 10) { //stop the population explosion
+		if (currentBunCount <= stopPopX) { //stop the population explosion
 			//stop the battery drain - the threat is almost neutralized
 			GameObject.Find ("Battery Life").GetComponent<BatteryHealth>().trackingBattery = false;
 			spawner.canReproduce = false;
@@ -49,6 +51,7 @@ public class ScoreKeeper : MonoBehaviour {
 	}
 	void GardenSecure() {
 		//if game over
+		endGameGUI.TriggerMessage ("Garden Secure");
 		//if more gardens
 		//if more levels
 	}

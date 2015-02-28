@@ -57,16 +57,25 @@ public class SpawnBunnies : MonoBehaviour {
 		//wait for this amount of time before going on
 		float adjustedTime = Random.Range (minTime, minTime + 5);
 		yield return new WaitForSeconds (adjustedTime-3f);
-		stork.SetActive (true); //reactivate the stork
-		stork.SendMessage ("Initialize", SendMessageOptions.DontRequireReceiver); //initialize the stork
-		stork.audio.Play (); //play the sound effect that signals the repro populating
-		yield return new WaitForSeconds (Random.Range(1f,2f)); //finish the adjusted time
-		beak.SetBool ("Cue the Beak", true); //trigger the beak drop
-		DropBundle ();
-		//having waited, make more zombie bunnies
-		PopulateGardenBunnies (litterSize);
-		//and start the coroutine again to minTime, but only if there are enough to reproduce
-		if (canReproduce)
-			StartCoroutine (StartReproducing (reproRate));
+		if (canReproduce) { //check the status before continuing after the pause
+			stork.SetActive (true); //reactivate the stork
+			stork.SendMessage ("Initialize", SendMessageOptions.DontRequireReceiver); //initialize the stork
+			stork.audio.Play (); //play the sound effect that signals the repro populating
+			yield return new WaitForSeconds (Random.Range (1f, 2f)); //finish the adjusted time
+			if (canReproduce) {
+				beak.SetBool ("Cue the Beak", true); //trigger the beak drop
+				DropBundle ();
+				//having waited, make more zombie bunnies
+//				PopulateGardenBunnies (litterSize);
+				//and start the coroutine again to minTime, but only if there are enough to reproduce
+//				if (canReproduce)
+				StartCoroutine (StartReproducing (reproRate));
+			}
+		}
+	}
+	void DropBundle () {
+		bundle.Play ("Bundle Fall"); //start the fall animation
+		bundle.transform.parent = null; //remove the bundle from the Stork Group
+		bundle.rigidbody2D.isKinematic = false; //turn on the physics
 	}
 }

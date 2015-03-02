@@ -25,6 +25,7 @@ public class EndGameGUI : MonoBehaviour {
 			GUI.color = Color.white; //return it to white, a pre-defined color
 			//Play Again
 			if (GUI.Button (new Rect (Screen.width / 2 - 325, Screen.height / 2, 300, 60), "Play Again")) {
+				Screen.showCursor = false; //hide the cursor
 				Application.LoadLevel ("GardenLevel1");
 				//call function here
 			}
@@ -43,6 +44,7 @@ public class EndGameGUI : MonoBehaviour {
 	public void TriggerMessage (string results) {
 		finishedMessage = results; //set the correct message
 		overrideColor = (finishedMessage == "Garden Overrun");
+		Screen.showCursor = true; //show the cursor
 		showEndGUI = true; //turn on the message
 	}
 }

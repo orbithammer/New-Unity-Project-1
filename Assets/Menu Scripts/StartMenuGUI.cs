@@ -33,7 +33,8 @@ public class StartMenuGUI : MonoBehaviour {
 		int x = 250 - xSize / 2; //the horizontal location
 		//play game
 		if (GUI.Button (new Rect (x, y, xSize, ySize), "Play Game")) {
-			//got to settings menu
+			//start game
+			Screen.showCursor = false; //hide the cursor
 			Application.LoadLevel ("GardenLevel1");
 		}
 		y += ySize + yOffset;

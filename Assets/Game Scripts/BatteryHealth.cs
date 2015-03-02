@@ -5,7 +5,7 @@ public class BatteryHealth : MonoBehaviour {
 	public float batteryFull = 70.0f; //battery life in seconds
 	float batteryRemaining; //remaining battery life in seconds
 	int percentRemaining; //converted to percent
-	internal bool trackingBattery = true; //timer not started
+	internal bool trackingBattery = false; //timer not started
 	GUIText guiTxt; //the GUI text component
 	public GameObject energyBar; //the battery's energy bar sprite
 	float baseScale; //the energy bar's base y scale

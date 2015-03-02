@@ -24,11 +24,9 @@ public class SpawnBunnies : MonoBehaviour {
 		maxX = currentZone.position.x + currentZone.localScale.x / 2;
 		minZ = currentZone.position.z - currentZone.localScale.z / 2;
 		maxZ = currentZone.position.z + currentZone.localScale.z / 2;
-		int tempLitterSize = litterSize * 3; //increased for the first drop only
+
 		gameManager = GameObject.Find ("Game Manager"); //identify and assign the Game Manager object
-		PopulateGardenBunnies (tempLitterSize); //create new zombie prefabs in the scene
-		float tempRate = reproRate * 2; //allow extra time before the first drop
-		StartCoroutine(StartReproducing(tempRate)); // start the first timer- pass in reproRate seconds
+
 	}
 	
 	// Update is called once per frame
@@ -77,5 +75,11 @@ public class SpawnBunnies : MonoBehaviour {
 		bundle.Play ("Bundle Fall"); //start the fall animation
 		bundle.transform.parent = null; //remove the bundle from the Stork Group
 		bundle.rigidbody2D.isKinematic = false; //turn on the physics
+	}
+	public void StartCountdown(){
+		int tempLitterSize = litterSize * 3; //increased for the first drop only
+		PopulateGardenBunnies (tempLitterSize); //create new zombie prefabs in the scene
+		float tempRate = reproRate * 2; //allow extra time before the first drop
+		StartCoroutine (StartReproducing (tempRate)); // start the first timer- pass in reproRate seconds
 	}
 }

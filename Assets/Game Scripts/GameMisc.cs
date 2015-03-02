@@ -12,6 +12,9 @@ public class GameMisc : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-	
+		if (Input.GetKeyDown (KeyCode.F1)) {
+			Screen.showCursor = true; //show the cursor
+			Application.LoadLevel (1); //load the Main Menu
+		}
 	}
 }

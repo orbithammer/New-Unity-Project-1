@@ -49,10 +49,12 @@
      <Compile Include="Assets\Game Scripts\BabyZBHandler.cs" />
      <Compile Include="Assets\Game Scripts\BatteryHealth.cs" />
      <Compile Include="Assets\Game Scripts\BundleManager.cs" />
+     <Compile Include="Assets\Game Scripts\ChildVisibility.cs" />
      <Compile Include="Assets\Game Scripts\DistanceDetector.cs" />
      <Compile Include="Assets\Game Scripts\FlyBy.cs" />
      <Compile Include="Assets\Game Scripts\GameMisc.cs" />
      <Compile Include="Assets\Game Scripts\HideAtStart.cs" />
+     <Compile Include="Assets\Game Scripts\LevelManager.cs" />
      <Compile Include="Assets\Game Scripts\OcclusionManager.cs" />
      <Compile Include="Assets\Game Scripts\PlantRemover.cs" />
      <Compile Include="Assets\Game Scripts\PlantVeggies.cs" />
@@ -64,8 +66,11 @@
      <Compile Include="Assets\Game Scripts\SensorDoors.cs" />
      <Compile Include="Assets\Game Scripts\SimpleCharacterController.cs" />
      <Compile Include="Assets\Game Scripts\SpawnBunnies.cs" />
+     <Compile Include="Assets\Menu Scripts\CreditsGUI.cs" />
      <Compile Include="Assets\Menu Scripts\EndGameGUI.cs" />
+     <Compile Include="Assets\Menu Scripts\MainMenuGUI.cs" />
      <Compile Include="Assets\Menu Scripts\MouseOver.cs" />
+     <Compile Include="Assets\Menu Scripts\SettingsGUI.cs" />
      <Compile Include="Assets\Menu Scripts\StartMenuGUI.cs" />
      <Compile Include="Assets\Test Scripts\ColliderTests.cs" />
      <Compile Include="Assets\Test Scripts\UpdateTests.cs" />

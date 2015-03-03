@@ -17,6 +17,7 @@ public class SpawnBunnies : MonoBehaviour {
 	public GameObject stork; //the Stork group
 	public Animator beak; //the lower beak's animator component
 	public Animator bundle; //the bundle's animator component
+	LevelManager levelManager; //the script that holds the data between levels
 
 	// Use this for initialization
 	void Start () {
@@ -26,7 +27,9 @@ public class SpawnBunnies : MonoBehaviour {
 		maxZ = currentZone.position.z + currentZone.localScale.z / 2;
 
 		gameManager = GameObject.Find ("Game Manager"); //identify and assign the Game Manager object
-
+		if (GameObject.Find ("Level Manager")) {
+			levelManager = GameObject.Find ("Level Manager").GetComponent<LevelManager> ();
+		}
 	}
 	
 	// Update is called once per frame
@@ -53,10 +56,14 @@ public class SpawnBunnies : MonoBehaviour {
 			zBunny.GetComponent<Animator>().Play("bunny eat", 0, Random.Range(0.0f,1.0f));
 			zBunny.transform.parent = bunHolder; //assign the clone to this object's transform
 		}
-		}
+	}
 	IEnumerator StartReproducing(float minTime) {
 		//wait for this amount of time before going on
-		float adjustedTime = Random.Range (minTime, minTime + 5);
+		float adjustedTime;
+		if (levelManager)
+			adjustedTime = Random.Range (minTime, minTime + levelManager.difficulty);
+		else
+			adjustedTime = Random.Range (minTime, minTime + 5f);
 		yield return new WaitForSeconds (adjustedTime-3f);
 		if (canReproduce) { //check the status before continuing after the pause
 			stork.SetActive (true); //reactivate the stork
@@ -86,6 +93,9 @@ public class SpawnBunnies : MonoBehaviour {
 		StartCoroutine (StartReproducing (tempRate)); // start the first timer- pass in reproRate seconds
 	}
 	public void RestartCountdown(){
-		StartCoroutine (StartReproducing (reproRate));
+		if (levelManager)
+			StartCoroutine (StartReproducing (reproRate + levelManager.difficulty));
+		else
+			StartCoroutine (StartReproducing (reproRate));
 	}
 }

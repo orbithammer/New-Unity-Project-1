@@ -7,6 +7,7 @@ public class GameMisc : MonoBehaviour {
 	//needed for level hopping
 	public ScoreKeeper scoreKeeper;//where the current bun count is kept (on the game manager)
 	public BatteryHealth batteryHealth;//where the battery charge is tracked (on the Battery Life)
+	public GameObject[] hideShows;//objects that are affected by occlusion culling
 
 
 	// Use this for initialization
@@ -30,20 +31,30 @@ public class GameMisc : MonoBehaviour {
 		}
 	}
 	void LevelPrep(){
-			if(levelManager){
-				//send the gnome's transform off to be saved if the levelManager has been found
-				Transform temptrans=gnomeTransform;
-				levelManager.gnomePos=temptrans.position;
-				levelManager.gnomeYRot=temptrans.localEulerAngles.y;
-				//send the current zombie bunnie count
-			levelManager.bunCount=scoreKeeper.currentBunCount;
+			if (levelManager) {
+			//send the gnome's transform off to be saved if the levelManager has been found
+			Transform temptrans = gnomeTransform;
+			levelManager.gnomePos = temptrans.position;
+			levelManager.gnomeYRot = temptrans.localEulerAngles.y;
+			//send the current zombie bunnie count
+			levelManager.bunCount = scoreKeeper.currentBunCount;
 			//send the battery info
-			levelManager.batteryRemaining=batteryHealth.batteryRemaining;
+			levelManager.percentRemaining = batteryHealth.percentRemaining;
+			//send the hide/show areas' current active states off to be stored
+			for (int x=0; x<hideShows.Length; x++) {
+				levelManager.areaVisibility [x] = hideShows [x].activeSelf;
 			}
 		}
-		IEnumerator LoadTheLevel(){
-			//makes sure all the storage tasks have been completed
-			yield return new WaitForSeconds(0.1f);
-			Application.LoadLevel("MainMenu");//load the Main Menu
 		}
+	IEnumerator LoadTheLevel() {
+		//makes sure all the storage tasks have been completed
+		yield return new WaitForSeconds(0.1f);
+		Application.LoadLevel("MainMenu");//load the Main Menu
+	}
+	public void LoadVis(){
+		//retrieve the hide/show areas' current states and appy them
+		for(int x=0;x<hideShows.Length;x++){
+			hideShows[x].SetActive(levelManager.areaVisibility[x]);
 		}
+	}
+	}

@@ -7,9 +7,10 @@ public class LevelManager : MonoBehaviour {
 	public Vector3 gnomePos;//the gnome's position
 	public float gnomeYRot;//the gnome's Y rotation
 	internal int bunCount=0;//number of buns in garden
-	internal float batteryRemaining;//time in seconds
+	internal int percentRemaining;//% of battery remaining
 	internal float ambientVolume = 0.8f;//volume for all ambient sounds/music
 	internal int difficulty=5;//affects battery life
+	public bool[] areaVisibility;//active state of the garden areas
 
 	void Awake(){
 		DontDestroyOnLoad (transform.gameObject);
@@ -18,8 +19,7 @@ public class LevelManager : MonoBehaviour {
 	void Start () {
 		print ("Starting " + Application.loadedLevelName);
 		currentLevel = Application.loadedLevel;//its index number
-	
-	}
+		}
 	
 	// Update is called once per frame
 	void Update () {
@@ -32,9 +32,14 @@ public class LevelManager : MonoBehaviour {
 	void ManageLevels(){
 		ProcessAudio ();//adjust the ambient volume no matter what the level is
 		if (currentLevel > 3) {//you are in a garden level
-
+			//set teh occlusion ares' visibility
+			GameObject.Find("Game Manager").GetComponent<GameMisc>().LoadVis();
 			//reposition & re-orient gnome
 			GameObject.Find ("Gnomatic Garden Defender").GetComponent<SetTransform> ().UpdateTransform (gnomePos, gnomeYRot);
+			BatteryHealth batteryHealth=GameObject.Find("Battery Life").GetComponent<BatteryHealth>();
+				//update full battery value, use inverse, add offset
+			float newBattery=(150f*difficulty*0.01f)+25f;
+			batteryHealth.UpdateBatteryLife(newBattery,percentRemaining);
 			if (gameState == 1)return;//still in staging area, just repopulate a new game
 			//game state must be 2, the game is on
 			//use the LevelManager's stored values to update and turn on HUD stuff
@@ -48,8 +53,7 @@ public class LevelManager : MonoBehaviour {
 			//restart the drop timer
 			spawnBunnies.RestartCountdown();
 			//manage the battery HUD
-			BatteryHealth batteryHealth=GameObject.Find("Battery Life").GetComponent<BatteryHealth>();
-			batteryHealth.batteryRemaining=batteryRemaining;
+//			batteryHealth.batteryRemaining=batteryRemaining;
 			batteryHealth.trackingBattery=true;//restart the drain
 			//turn on battery sprites again
 			GameObject.Find("Garden HUD").GetComponent<ChildVisibility>().SpriteToggle(true);

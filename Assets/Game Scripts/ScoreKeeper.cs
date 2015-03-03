@@ -10,6 +10,7 @@ public class ScoreKeeper : MonoBehaviour {
 	public SpawnBunnies spawner; //the SpawnBunnies script
 	public int stopPopX = 1; //variable for stopping extra zombie bunny drops
 	public EndGameGUI endGameGUI; //the script that handles the GUI
+	public AudioSource munching;//the sound effect compnent for the overrun garden
 
 	// Use this for initialization
 	void Start () {
@@ -26,7 +27,10 @@ public class ScoreKeeper : MonoBehaviour {
 
 		currentBunCount += adjustment; //add or subtract the number passed in
 		bunnyCounter.guiText.text = currentBunCount.ToString(); //change the GUI text's text
+
 		if (currentBunCount == 0) { //garden secure
+			if (munching)
+				munching.enabled = false;;//turn off the munching sound
 			GardenSecure ();
 			return;
 		}

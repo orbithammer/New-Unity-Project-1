@@ -6,10 +6,14 @@ public class SettingsGUI : MonoBehaviour {
 	float diffSliderValue = 5.0F; //difficulty slider
 	float ambSliderValue = 1.0f; //ambient volume slider
 	LevelManager levelManager;//the script that holds the data between levels
+
+
 	// Use this for initialization
 	void Start () {
 		if (GameObject.Find ("Level Manager")) {
 			levelManager = GameObject.Find ("Level Manager").GetComponent<LevelManager> ();
+			ambSliderValue = levelManager.ambientVolume;//set the volume to the stored value
+			diffSliderValue = levelManager.difficulty;//set the difficulty to the stored value
 		}
 	}
 	

@@ -4,7 +4,7 @@ using System.Collections;
 public class BatteryHealth : MonoBehaviour {
 	public float batteryFull = 70.0f; //battery life in seconds
 	internal float batteryRemaining; //remaining battery life in seconds
-	int percentRemaining; //converted to percent
+	internal int percentRemaining=100; //converted to percent
 	internal bool trackingBattery = false; //timer not started
 	GUIText guiTxt; //the GUI text component
 	public GameObject energyBar; //the battery's energy bar sprite
@@ -69,5 +69,10 @@ public class BatteryHealth : MonoBehaviour {
 		GameObject.Find ("Arm Group").GetComponent<MouseLook> ().enabled = false;
 		//end of game options
 		endGameGUI.TriggerMessage ("Garden Overrun");
+	}
+	public void UpdateBatteryLife(float newBatteryFull, int newPercentRemaining){
+		percentRemaining = newPercentRemaining;
+		batteryFull = newBatteryFull;
+		batteryRemaining = (batteryFull * percentRemaining * 0.01f);
 	}
 }

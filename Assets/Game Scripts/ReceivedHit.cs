@@ -49,7 +49,7 @@ public class ReceivedHit : MonoBehaviour {
 	}
 	void Terminator (int newDamage) {
 		damage += newDamage; //add more damage from
-		print (damage);
+//		print (damage);
 		if (damage > 10)
 			DestroyBun (); //destroy only if there is enough damage
 	}

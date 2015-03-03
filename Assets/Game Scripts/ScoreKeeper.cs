@@ -2,7 +2,7 @@
 using System.Collections;
 
 public class ScoreKeeper : MonoBehaviour {
-	int currentBunCount = 0; //the current number of zombie bunnies
+	internal int currentBunCount = 0; //the current number of zombie bunnies
 	public GameObject bunnyCounter; //GUI text object
 	int killCount = 0; //player hits
 	int hitsRequired = 10; //hits required for the reward
@@ -54,5 +54,15 @@ public class ScoreKeeper : MonoBehaviour {
 		endGameGUI.TriggerMessage ("Garden Secure");
 		//if more gardens
 		//if more levels
+	}
+	public void StopTheMaddness(int bunCount){
+		if(bunCount<=stopPopX){
+			//stop the battery drain and refresh GUI
+			BatteryHealth batteryHealth=GameObject.Find("Battery Life").GetComponent<BatteryHealth>();
+			batteryHealth.trackingBattery=false;
+			batteryHealth.UpdateBattery();
+			//stop bun drop
+			spawner.canReproduce=false;
+		}
 	}
 }

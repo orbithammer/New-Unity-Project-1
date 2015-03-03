@@ -33,12 +33,15 @@ public class SpawnBunnies : MonoBehaviour {
 	void Update () {
 	
 	}
-	void PopulateGardenBunnies (int count) {
+	public void PopulateGardenBunnies (int count) {
 		if (!canReproduce)
 			return; //cancel the latest population explosion
-		count = Random.Range (count * 3 / 4, count + 1); //randomize the count number
-		//send the ammount to update the total
-		gameManager.SendMessage("UpdateCount",count, SendMessageOptions.DontRequireReceiver);
+		if (count < 100) {//check for the resuming game flag
+			count = Random.Range (count * 3 / 4, count + 1); //randomize the count number
+			//send the ammount to update the total
+			gameManager.SendMessage ("UpdateCount", count, SendMessageOptions.DontRequireReceiver);
+		}
+		else count-=100;//strip off the extra 100, to resume to level flag
 //		print ("zombie Bunnies =" + currentBunCount);
 		for (int i = 0; i < count; i++) {
 			//create a new zombie prefab in the scene
@@ -81,5 +84,8 @@ public class SpawnBunnies : MonoBehaviour {
 		PopulateGardenBunnies (tempLitterSize); //create new zombie prefabs in the scene
 		float tempRate = reproRate * 2; //allow extra time before the first drop
 		StartCoroutine (StartReproducing (tempRate)); // start the first timer- pass in reproRate seconds
+	}
+	public void RestartCountdown(){
+		StartCoroutine (StartReproducing (reproRate));
 	}
 }

@@ -3,7 +3,7 @@ using System.Collections;
 
 public class BatteryHealth : MonoBehaviour {
 	public float batteryFull = 70.0f; //battery life in seconds
-	float batteryRemaining; //remaining battery life in seconds
+	internal float batteryRemaining; //remaining battery life in seconds
 	int percentRemaining; //converted to percent
 	internal bool trackingBattery = false; //timer not started
 	GUIText guiTxt; //the GUI text component
@@ -24,13 +24,10 @@ public class BatteryHealth : MonoBehaviour {
 	void Update () {
 		if (trackingBattery) {
 			if (batteryRemaining > 0) {
-				batteryRemaining -= Time.deltaTime; //second countdown
-				percentRemaining = (int)((batteryRemaining / batteryFull) * 100); //round off for percent
+
 				UpdateBattery(); //update the sprite graphic
-				//adjust battery's energy bar sprite
-				Vector3 adjustedScale = energyBar.transform.localScale; //store the sprite's scale in a temp var
-				adjustedScale.y = baseScale * (batteryRemaining / batteryFull); //calculate the actual y scale
-				energyBar.transform.localScale = adjustedScale; //apply the new value
+			
+
 				guiTxt.text = percentRemaining.ToString () + "%";
 			}
 			else {
@@ -40,7 +37,10 @@ public class BatteryHealth : MonoBehaviour {
 		}
 	}
 
-	void UpdateBattery() {
+	public void UpdateBattery() {
+		batteryRemaining -= Time.deltaTime; //second countdown
+		percentRemaining = (int)((batteryRemaining / batteryFull) * 100); //round off for percent
+
 		//animate the battery's energy bar sprite to match percent remaining
 		//if less than 50% and greater than 25%, adjust color- raise red to get yellow
 		if (percentRemaining <= 50 && percentRemaining > 25) {
@@ -51,7 +51,12 @@ public class BatteryHealth : MonoBehaviour {
 		if (percentRemaining <= 25) {
 			float adj = (25 - percentRemaining) * 0.04f;
 			energyBar.GetComponent<SpriteRenderer>().color = new Color(1f,1f-adj,0f);
+
 		}
+		//adjust battery's energy bar sprite
+		Vector3 adjustedScale = energyBar.transform.localScale; //store the sprite's scale in a temp var
+		adjustedScale.y = baseScale * (batteryRemaining / batteryFull); //calculate the actual y scale
+		energyBar.transform.localScale = adjustedScale; //apply the new value
 	}
 	void GameOver(){
 		//deactivate the potato gun firing

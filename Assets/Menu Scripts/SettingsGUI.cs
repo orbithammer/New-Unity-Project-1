@@ -5,10 +5,12 @@ public class SettingsGUI : MonoBehaviour {
 	public GUISkin newSkin; //custom skin to use
 	float diffSliderValue = 5.0F; //difficulty slider
 	float ambSliderValue = 1.0f; //ambient volume slider
-
+	LevelManager levelManager;//the script that holds the data between levels
 	// Use this for initialization
 	void Start () {
-	
+		if (GameObject.Find ("Level Manager")) {
+			levelManager = GameObject.Find ("Level Manager").GetComponent<LevelManager> ();
+		}
 	}
 	
 	// Update is called once per frame
@@ -43,7 +45,12 @@ public class SettingsGUI : MonoBehaviour {
 		GUI.EndGroup ();
 		if (GUI.changed) {
 			audio.volume = ambSliderValue;//adjust the audio clip's volume
+			//send updated values back to LevelManager
+			if(levelManager){
+				levelManager.ambientVolume=ambSliderValue;
+				levelManager.difficulty=(int)(diffSliderValue);
+			}
 		}
-//		print (diffSliderValue + " " + ambSliderValue);
+		print (diffSliderValue + " " + ambSliderValue);
 	}
 }
